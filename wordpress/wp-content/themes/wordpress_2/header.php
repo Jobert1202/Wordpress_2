@@ -1,16 +1,46 @@
-<header>
-  <div class="brand">
-    <div class="logo">B</div>
-    <div>
-      <div style="font-weight:800">Basic stránka</div>
-      <div class="meta" style="font-size:12px">Jednoduchý layout s header / main / footer</div>
-    </div>
-    </div>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php wp_title(); ?></title>
+    <?php wp_head(); ?>
+</head>
 
-  <nav aria-label="Hlavní navigace">
-    <a href="#">Domů</a>
-    <a href="#about">O nás</a>
-    <a href="#contact">Kontakt</a>
-    <a class="btn" href="#get">Začít</a>
-    </nav>
+<header>
+  <!-- Wrapper dáváme kvůli tomu, aby na velkých monitorech nebyl header moc roztáhlý
+        Obecně se bere maximální šířka cca 1300px
+  -->
+  <div class="wrapper">
+      <!-- 
+          Zde je lepší si všechny sekce dát na itemy v divech, aby se dobře s nima dělalo přes display flex
+          Využívejte přehlednost v kódu pomocí class, pište první rodiče a pak potomka, přes stylus/SCSS můžeme vnořovat lépe selektory a kód je čistější
+        -->
+      <div class="wrapper-logo">
+          <img src="/img/availability-svgrepo-com.svg" alt="">
+      </div>
+      <!--
+          Zde vytváříme ikonu hamburgeru, který je rozanimovaný
+          Je lepší si udělat čárky pomocí spanu, protože se pak dobře mohou rozanimovat
+          Nechme spany prázný, protože grafikcou podobu jím dáváme pomocí css
+      -->
+      <div class="wrapper-hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </div>
+  <!-- 
+      Jedíný nav je mimo wrapper, důvod je takový, aby se na mobilním zařízení schovával pod wrapper.
+      Pokud bychom to chtěli pod header, aby se schovával, je to těžší varianta, má konflikt s headrem, pokud je nav jako absolute
+      Na PC verze se pak mění z-index a přizpůsobuje se na prostředek a itemy v navu pak ovládáme pomocí displey flexu
+    -->            
+  <nav>
+      <!--
+          # Je prázdný odkaz, bude nás odkazovat na jednu na stejnou stránku
+      -->
+      <a href="#">Home page</a>
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+  </nav>
 </header>
