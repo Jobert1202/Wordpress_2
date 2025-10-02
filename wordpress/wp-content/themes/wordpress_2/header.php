@@ -17,7 +17,7 @@
           Využívejte přehlednost v kódu pomocí class, pište první rodiče a pak potomka, přes stylus/SCSS můžeme vnořovat lépe selektory a kód je čistější
         -->
       <div class="wrapper-logo">
-          <img src="/img/availability-svgrepo-com.svg" alt="">
+          <img src="<?php echo get_template_directory_uri(); ?> /img/Cyberpunk_2077_logo.svg.png" alt="">
       </div>
       <!--
           Zde vytváříme ikonu hamburgeru, který je rozanimovaný

@@ -40,8 +40,8 @@ header .wrapper {
   position: relative;
 }
 header .wrapper-logo {
-  width: 50px;
-  height: 50px;
+  max-width: 300px;
+  max-height: 50px;
 }
 header .wrapper-logo img {
   width: 100%;
