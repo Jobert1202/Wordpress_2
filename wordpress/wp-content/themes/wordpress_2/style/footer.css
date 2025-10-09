@@ -3,6 +3,10 @@ footer{
     height: 200px;
     background-color: black;
     color: aliceblue;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative; /* aby byl nad backgroundem */
+    z-index: 10;
 
     .wrapper{
         display: flex;
@@ -19,4 +23,70 @@ footer{
             padding: 36px 0;
         }
     }
+}
+
+/* Kontejner pro vlnky - přes celý prostor mezi main a footer */
+.wave-container {
+    position: relative;
+    width: 100%;
+    height: 150px; /* výška mezi main a footerem */
+    overflow: hidden;
+}
+
+/* Vlnky */
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    left: -50%;
+    bottom: 0; /* dolní část se dotýká footeru */
+    opacity: 0.4;
+}
+
+/* Barvy */
+.wave1 path { fill: rgba(0,0,0,0.4); }
+.wave2 path { fill: rgba(0,0,0,0.4); }
+.wave3 path { fill: rgba(0,0,0,0.4); }
+
+/* Animace horizontální a vertikální + jemné deformace */
+.wave1 {
+    animation: wave1Move 12s linear infinite, wave1UpDown 4s ease-in-out infinite alternate, wave1Morph 6s ease-in-out infinite alternate;
+    z-index: 3;
+}
+.wave2 {
+    animation: wave2Move 10s linear infinite, wave2UpDown 5s ease-in-out infinite alternate, wave2Morph 5s ease-in-out infinite alternate;
+    z-index: 2;
+}
+.wave3 {
+    animation: wave3Move 8s linear infinite, wave3UpDown 6s ease-in-out infinite alternate, wave3Morph 7s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+/* Horizontální posun */
+@keyframes wave1Move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes wave2Move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes wave3Move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* Vertikální vlání */
+@keyframes wave1UpDown { 0% { transform: translateY(0); } 100% { transform: translateY(25px); } }
+@keyframes wave2UpDown { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+@keyframes wave3UpDown { 0% { transform: translateY(0); } 100% { transform: translateY(15px); } }
+
+/* Jemná deformace dolní části, aby vlnky nebyly stacionární */
+@keyframes wave1Morph {
+    0% { d: path("M0,50 C300,90 900,10 1200,50 L1200,100 L0,100 Z"); }
+    50% { d: path("M0,55 C300,80 900,20 1200,55 L1200,100 L0,100 Z"); }
+    100% { d: path("M0,50 C300,90 900,10 1200,50 L1200,100 L0,100 Z"); }
+}
+
+@keyframes wave2Morph {
+    0% { d: path("M0,50 C300,20 900,80 1200,50 L1200,100 L0,100 Z"); }
+    50% { d: path("M0,55 C300,30 900,70 1200,55 L1200,100 L0,100 Z"); }
+    100% { d: path("M0,50 C300,20 900,80 1200,50 L1200,100 L0,100 Z"); }
+}
+
+@keyframes wave3Morph {
+    0% { d: path("M0,50 C300,70 900,30 1200,50 L1200,100 L0,100 Z"); }
+    50% { d: path("M0,45 C300,60 900,40 1200,45 L1200,100 L0,100 Z"); }
+    100% { d: path("M0,50 C300,70 900,30 1200,50 L1200,100 L0,100 Z"); }
 }

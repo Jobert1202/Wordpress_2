@@ -1,13 +1,21 @@
 <?php
 function moje_sablona_nacteni_skriptu() {
-    //CSS
+    // CSS
     wp_enqueue_style(
-        "moje-styly",
+        "hlavni-styly", // unikátní název
         get_template_directory_uri() . "/style.css",
         array(),
         filemtime(get_template_directory() . "/style.css")
     );
-    //JS
+
+    wp_enqueue_style(
+        "footer-styly", // jiný handle
+        get_template_directory_uri() . "/style/footer.css",
+        array("hlavni-styly"), // načte se po hlavním stylu
+        filemtime(get_template_directory() . "/style/footer.css")
+    );
+
+    // JS
     wp_enqueue_script(
         "moje-skripty",
         get_template_directory_uri() . "/script/script.js",

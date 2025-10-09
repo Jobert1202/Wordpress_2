@@ -6,7 +6,7 @@
         <title><?php wp_title() ?></title>
     </head>
 
-
+    <body>
     <?php
         /**
          * The main template file
@@ -50,7 +50,7 @@
             endif;
             ?>
         </main>
-
+        
         <?php
         get_footer(); // Načte footer.php
         ?>
